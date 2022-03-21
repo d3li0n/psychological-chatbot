@@ -39,7 +39,10 @@ python -m venv venv
 ```bash
 pip install -r requirements.txt
 ```  
-**Step 6:** Start the program by running this command:
+**Step 6:** Change the filename of "config.example.json" to "config.json" in the root folder of the project.
+
+**Step 7:** Open the "config.json" file and add to the field of "API_KEY" a Google API Key that you created in your Google Developer Console.  
+**Step 8:** Start the program by running this command:
 ```bash
 python app.py
 ```
@@ -52,7 +55,11 @@ python app.py
 ```bash
 pip install -r requirements.txt
 ```  
-**Step 4:** Start the program by running this command:
+**Step 4:** Change the filename of "config.example.json" to "config.json" in the root folder of the project.
+
+**Step 5:** Open the "config.json" file and add to the field of "API_KEY" a Google Places API Key that you created in your Google Developer Console.
+
+**Step 6:** Start the program by running this command:
 ```bash
 python3 app.py
 ```
@@ -82,13 +89,17 @@ The project was created for the UBC Okanagan third year level course.
 
 **Step 1:** Open your Powershell command line tool.
 
-**Step 2:** To run the unit test in the Bot class run this command:
+**Step 2:** To run the unit test for the Bot class, run this command:
 ```bash
 python tests/bot.test.py 
 ```
-**Step 3:** To run the unit test in the FileReader class run this command:
+**Step 3:** To run the unit test for the FileReader class, run this command:
 ```bash
 python tests/fileReader.test.py
+```
+**Step 4:** To run the unit test for the GooglePlaces class, run this command:
+```bash
+python tests/googleplaces.test.py
 ```
 &nbsp;
 ### **For Unix Based Systems**
@@ -96,13 +107,17 @@ python tests/fileReader.test.py
 
 **Step 1:** Open a terminal in your VSCode by going to ***Terminal > New Terminal*** 
 
-**Step 2:** To run the unit test in the Bot class run this command:
+**Step 2:** To run the unit test for the Bot class, run this command:
 ```bash
 python3 tests/bot.test.py
 ```
-**Step 3:** To run the unit test in the FileReader class run this command:
+**Step 3:** To run the unit test for the FileReader class, run this command:
 ```bash
 python3 tests/fileReader.test.py
+```
+**Step 4:** To run the unit test for the GooglePlaces class, run this command:
+```bash
+python3 tests/googleplaces.test.py
 ```
 &nbsp;
 ## Features by Branch

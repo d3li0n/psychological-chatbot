@@ -1,5 +1,6 @@
 # Files to ignore
 .DS_Store
+config.json
 
 # Folders to ignore
 __pycache__/
