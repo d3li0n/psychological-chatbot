@@ -8,7 +8,7 @@ sys.path.insert(0, cur_path+"/..")
 from fileReader import FileReader
 
 class GooglePlaces:
-    
+
     """
         Constructor method.
         Sets the API key from the file and initializes the constructor of googlemaps library
@@ -16,7 +16,7 @@ class GooglePlaces:
     def __init__(self, configPath):
         try:
             self.setAPIKey(configPath)
-            self.gmaps = googlemaps.Client(key=f'{self.API_KEY}')
+            self.gmaps = googlemaps.Client(key=f'{self.getAPIKey()}')
         except Exception as message:
             print(message)
             sys.exit(1)
@@ -33,6 +33,12 @@ class GooglePlaces:
         file = FileReader(configPath)
         self.API_KEY = file.getFileContent()['API_KEY']
     
+    """
+        Method to return the api key for the Google Places API
+    """
+    def getAPIKey(self):
+        return self.API_KEY
+
     """
         Method connects to Google Maps API Service to search by user input places in Kelowna.
         If query argument is empty, throw an Error and stop the program

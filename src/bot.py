@@ -26,7 +26,6 @@ class Bot:
 		self.initialize(pathFile)
 		self.sid = SentimentIntensityAnalyzer()
 
-
 	"""
 		Using the file reader to read in the data. using the stemmer class to check if the key matches the condition of the word.
 	"""
