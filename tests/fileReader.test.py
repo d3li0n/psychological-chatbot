@@ -21,21 +21,21 @@ class Test(unittest.TestCase):
         Testing if the data does exist and has certain amount of objects in the file
     """
     def testExistingData(self):
-        fileReader = FileReader("data.json")
+        fileReader = FileReader("data/data.json")
         self.assertEqual(len(fileReader.getFileContent()), 2)
 
     """
         Testing each of the conditions from the data.json file that has certain amount of the content in the conditions
     """
     def testExistingDataConditions(self):
-        fileReader = FileReader("data.json")
+        fileReader = FileReader("data/data.json")
         self.assertEqual(len(fileReader.getFileContent()['conditions']), 5)
 
     """
         Testing the existing data nodes from data.json file
     """
     def testExistingDataNodes(self):
-        fileReader = FileReader("data.json")
+        fileReader = FileReader("data/data.json")
         self.assertEqual(len(fileReader.getFileContent()['nodes']), 50)
 
     """
