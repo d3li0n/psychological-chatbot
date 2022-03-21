@@ -118,18 +118,23 @@ class GUI:
             self.renderMessage(msg1)
             self.renderMessage(self.bot.setUserName(msg))
         else:
-            # if no more nodes in dialogue or user printed "quit" - exit the program
-            try:
-                response = self.bot.getResponse(msg)['text']
-            except:
-                sys.exit()
-
+            response = self.bot.getResponse(msg)
+        
             # renders user's message
             msg1 = f"> {self.bot.getUserName()}: {msg}\n\n"
             self.renderMessage(msg1)
 
             # renders bot's message
-            msg2 = f"> Bot: {response}\n\n"
+            try:
+                if "locations" in response:
+                    locations_list = "I found the following list of locations: \n\n"
+                    for location in response['locations']:
+                        locations_list += f"Name: {location[1]}. Address: {location[0]}\n" 
+                    msg2 = f"> Bot: {locations_list}\n{response['text']}\n\n"
+                else:
+                    msg2 = f"> Bot: {response['text']}\n\n"
+            except:
+                sys.exit(1)
             self.renderMessage(msg2)
 
         self.msg_entry.delete(0, END)

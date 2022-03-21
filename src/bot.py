@@ -14,6 +14,7 @@ import sys
 cur_path=os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, cur_path+"/..")
 from src.fileReader import FileReader
+from src.services.googleplaces import GooglePlaces
 
 class Bot:
 	"""
@@ -25,6 +26,7 @@ class Bot:
 		self.conditions = {}
 		self.initialize(pathFile)
 		self.sid = SentimentIntensityAnalyzer()
+		self.gplaces = GooglePlaces('config.json')
 
 	"""
 		Using the file reader to read in the data. using the stemmer class to check if the key matches the condition of the word.
@@ -92,8 +94,14 @@ class Bot:
 		nodeValue = self.current
 		
 		if 'print' in nodeValue:
+			findLocations = self.getPlaceLocations(answer)
+			
 			nodeValue = self.findNode(nodeValue['children'][0])
 			self.current = nodeValue
+
+			if len(findLocations) != 0:
+				nodeValue['locations'] = findLocations
+
 			return nodeValue
 
 		if answer.lower() == "quit":
@@ -103,6 +111,8 @@ class Bot:
 			nodeValue = self.findNode(nodeValue['children'][0])
 		else:
 			answer_words = [self.stemmer.stem(word) for word in answer.lower().split(" ")]
+
+			
 			for child in nodeValue['children']:
 				child = self.findNode(child)
 				
@@ -137,6 +147,28 @@ class Bot:
 
 		self.current = nodeValue
 		return nodeValue
+
+	"""
+		Method that analyzes the part of the speech of the user.
+		If the getPosTag detects that they user started the sentence with "What/Which",
+		program will analyze every word of the question to create a proper query and pass to Google Places API to display the result.
+	"""
+	def getPlaceLocations(self, answer):
+
+		answer_words = answer.lower().replace("?", " ").split(" ")
+		result = self.getPosTag({'pos': { 'WRB' } }, answer_words)
+
+		if len(result) == 0:
+			return []
+
+		userInput = ""
+		for pos in answer_words:
+			if len(self.getPosTag({'pos': { 'NN', 'JJ' } }, [pos])) != 0:
+				userInput = f"{userInput} {pos}"
+		
+		userInput = userInput.strip()
+		
+		return self.gplaces.getPlaces(userInput)
 
 	"""
 		@api
