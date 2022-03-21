@@ -31,7 +31,7 @@ class GUI:
     def setup(self):
         # Define the app name and screen size
         self.window.title("Psych Bot v1.1")
-        self.window.resizable(width=False, height=False)
+        self.window.resizable(width=True, height=False)
         self.window.configure(width=470, height=750, bg=BG_COLOR)
         
         # Set a head title of the app for the user display, and display it on the top left side of the app screen
@@ -89,7 +89,7 @@ class GUI:
         Initialize the Bot class and constructor, prompt the user to enter their name
     """
     def initializeBot(self):
-        self.bot = Bot("data.json")
+        self.bot = Bot("data/data.json")
         msg2 = f"\n> Bot: Hello, I am Psych-Bot. What is your name?\n\n"
         self.renderMessage(msg2)
 
