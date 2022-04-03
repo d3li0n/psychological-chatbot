@@ -15,6 +15,7 @@ cur_path=os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, cur_path+"/..")
 from src.fileReader import FileReader
 from src.services.googleplaces import GooglePlaces
+from src.services.wikipedia import Wikipedia
 
 class Bot:
 	"""
@@ -27,6 +28,7 @@ class Bot:
 		self.initialize(pathFile)
 		self.sid = SentimentIntensityAnalyzer()
 		self.gplaces = GooglePlaces('config.json')
+		self.wiki = Wikipedia()
 
 	"""
 		Using the file reader to read in the data. using the stemmer class to check if the key matches the condition of the word.
@@ -95,12 +97,16 @@ class Bot:
 		
 		if 'print' in nodeValue:
 			findLocations = self.getPlaceLocations(answer)
-			
+			wikipediaResponse = self.getWikipediaDefinition(answer)
+
 			nodeValue = self.findNode(nodeValue['children'][0])
 			self.current = nodeValue
 
 			if len(findLocations) != 0:
 				nodeValue['locations'] = findLocations
+
+			if len(wikipediaResponse) != 0:
+				nodeValue['wikipedia'] = wikipediaResponse
 
 			return nodeValue
 
@@ -169,6 +175,27 @@ class Bot:
 		userInput = userInput.strip()
 		
 		return self.gplaces.getPlaces(userInput)
+
+	"""
+		Method that analyzes the part of the speech of the user.
+		If the getPosTag detects that they user started the sentence with "What/Which",
+		program will analyze every word of the question to create a proper query and pass to Wikipedia class API to display the result.
+	"""
+	def getWikipediaDefinition(self, answer):
+		answer_words = answer.lower().replace("?", " ").split(" ")
+		result = self.getPosTag({'pos': { 'WP' } }, answer_words)
+
+		if len(result) == 0:
+			return []
+
+		userInput = ""
+		for pos in answer_words:
+			if len(self.getPosTag({'pos': { 'NN', 'JJ' } }, [pos])) != 0:
+				userInput = f"{userInput} {pos}"
+		
+		userInput = userInput.strip()
+
+		return [self.wiki.getResponse(userInput)]
 
 	"""
 		@api

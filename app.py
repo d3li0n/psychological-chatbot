@@ -131,6 +131,8 @@ class GUI:
                     for location in response['locations']:
                         locations_list += f"Name: {location[1]}. Address: {location[0]}\n" 
                     msg2 = f"> Bot: {locations_list}\n{response['text']}\n\n"
+                elif "wikipedia" in response:
+                    msg2 = f"> Bot: {response['wikipedia'][0]}\n\nHope this helped, now, back to our conversation.\n\n{response['text']}\n\n"
                 else:
                     msg2 = f"> Bot: {response['text']}\n\n"
             except:

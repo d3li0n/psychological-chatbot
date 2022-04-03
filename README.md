@@ -101,6 +101,10 @@ python tests/fileReader.test.py
 ```bash
 python tests/googleplaces.test.py
 ```
+**Step 5:** To run the unit test for the Wikipedia class, run this command:
+```bash
+python tests/wikipedia.test.py
+```
 &nbsp;
 ### **For Unix Based Systems**
 &nbsp;
@@ -118,6 +122,10 @@ python3 tests/fileReader.test.py
 **Step 4:** To run the unit test for the GooglePlaces class, run this command:
 ```bash
 python3 tests/googleplaces.test.py
+```
+**Step 5:** To run the unit test for the Wikipedia class, run this command:
+```bash
+python3 tests/wikipedia.test.py
 ```
 &nbsp;
 ## Features by Branch
