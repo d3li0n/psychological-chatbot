@@ -243,7 +243,7 @@ This is a level 1 data flow diagram. It shows a more specific relationship betwe
 ## Individual Component
 
 ### **Links:**
-- [Individual Documentation]()
+- [Individual Documentation](https://github.com/d3li0n/psychological-chatbot/blob/main/docs/Dima_Zhuravel_Documentation_Chatbot.pdf)
 
 **Note:** Before using any new features, ensure that you completed a step-by-step guide on how to run the chatbot.
 
