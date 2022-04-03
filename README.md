@@ -10,8 +10,10 @@
 - [Assignment 3 New Features](#assignment-3-new-features)
 - [Data Flow Diagrams](#data-flow-diagrams)
 - [Project Demo](#project-demo)
-- [Contributors](#contributors)
+- [Individual Component](#individual-component)
 - [Presentation](#presentation)
+- [Contributors](#contributors)
+
 
 ## Project Setup
 
@@ -238,6 +240,32 @@ This is a level 1 data flow diagram. It shows a more specific relationship betwe
 
 <img src="./docs/images/good3.png" width="500">
 
+## Individual Component
+
+### **Links:**
+- [Individual Documentation](https://github.com/d3li0n/psychological-chatbot/blob/main/docs/Dima_Zhuravel_Documentation_Chatbot.pdf)
+
+**Note:** Before using any new features, ensure that you completed a step-by-step guide on how to run the chatbot.
+
+The chatbot got two new features on its hands. It can answer questions using Wikipedia API, and search for nearby places, like hospital, in Kelowna.
+
+### **1. Wikipedia API**
+That chatbot can answer any questions that the user prompts in the chat. It is an alternative to the Yahoo Answers as this service was discontinued a while ago. As long as Wikipedia has an article to the relevant question, it will show a short summary of the article, and the link to read more about it.  
+
+To use the new feature, wait for the response from the chatbot where it doesn't ask you a question, start your sentence with a keyword ` What ` and any sample question, then, hit ` Enter `.
+
+Below is a sample output.
+<img src="./docs/images/wikipedia-sample.png" width="1000">
+
+### **2. Google Places API**
+The chatbot is able to locate any places in the Kelowna area. Since the chatbot's purpose is to provide psychological help, it might be handful for the user to find the closest medical center to get a help in-person.
+
+**Important:** Before using this feature, you need to obtain the Google API key, otherwise program will not run correctly. As stated before, follow a step-by-step guide.
+
+To use the new feature, wait for the response from the chatbot where it doesn't ask you a question, start your sentence with a keyword ` Where ` and any place, then, hit ` Enter `.
+
+Below is a sample output.
+<img src="./docs/images/googleplaces-sample.png" width="1000">
 
 ## Presentation 
 **Assignment 2**
