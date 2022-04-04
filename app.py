@@ -116,7 +116,7 @@ class GUI:
             # Set the user name, and render the response
             msg1 = f"> Unknown User: {msg}\n\n"
             self.renderMessage(msg1)
-            self.renderMessage(self.bot.setUserName(msg))
+            self.renderMessage(self.bot.setUserName(msg.strip()))
         else:
             response = self.bot.getResponse(msg)
         
