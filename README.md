@@ -276,6 +276,10 @@ https://drive.google.com/file/d/1d1YoKrsMo2QLvyRmTXqykamdag-MjdqK/view
 
 https://drive.google.com/file/d/1ELe7H8BuCDFhErKWm7hDNFb-P9e7TTNP/view
 
+**Individual Assignment**
+
+https://drive.google.com/file/d/1H6anY_ThYEBpAFVYxU3eKJkHNiU08Uo8/view?usp=sharing  
+
 ## Contributors
 
 - [@d3li0n](https://github.com/d3li0n) - GUI, Automated Unit Testing, Code Refactoring, Project Management.
